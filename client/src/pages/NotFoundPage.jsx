@@ -1,6 +1,5 @@
 import { useRouteError } from 'react-router-dom';
 
-import PageContent from '../components/PageContent';
 import NavBar from '../components/Navbar';
 
 function NotFoundPage(){
@@ -20,10 +19,9 @@ if(error.status === 404){
 
     return (
     <div>
-        <NavBar />
-        <PageContent title={title}>
+        <div title={title}>
             <p>{message}</p>
-        </PageContent>
+        </div>
     </div>)
 } 
 

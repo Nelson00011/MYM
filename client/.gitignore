@@ -6,7 +6,7 @@
 .pnp.js
 
 #API
-/src/nasa
+src\nasa.jsx
 
 # testing
 /coverage

@@ -3,7 +3,7 @@ import { NavLink, Form, useRouteLoaderData } from 'react-router-dom';
 import classes from './NavBar.module.css';
 
 function NavBar() {
-const token = useRouteLoaderData('root');
+// const token = useRouteLoaderData('root');
 
   return (
     <header className={classes.header}>
@@ -11,7 +11,7 @@ const token = useRouteLoaderData('root');
         <ul className={classes.list}>
           <li>
             <NavLink
-              to="/"
+              to="/home"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
@@ -22,16 +22,16 @@ const token = useRouteLoaderData('root');
           </li>
           <li>
           <NavLink
-              to="/events"
+              to="/images"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
             >
-              Events
+             Daily Image
             </NavLink>
           </li>
         
-          {!token &&
+          {true &&
           <li>
             <NavLink
               to={`/auth`}
@@ -39,10 +39,10 @@ const token = useRouteLoaderData('root');
                 isActive ? classes.active : undefined
               }
             >
-              Authentification
+              Login
             </NavLink>
           </li>}
-         {token && <li>
+         {false && <li>
           <Form action="/logout" method='post'> 
             <button>Logout</button>
             </Form>
