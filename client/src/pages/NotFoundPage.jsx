@@ -1,7 +1,5 @@
 import { useRouteError } from 'react-router-dom';
 
-import NavBar from '../components/Navbar';
-
 function NotFoundPage(){
 const error = useRouteError();
 let title = "An error occured";

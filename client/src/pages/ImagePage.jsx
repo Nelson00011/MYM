@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Button, IconButton, CircularProgress, useTheme} from "@mui/material";
+import { Box, Typography, Button, CircularProgress} from "@mui/material";
 import { shades } from "../theme";
 
 function ImagePage() {
   const [item, setItem] = useState({});
-  const [loadingItem, setLoadingItem] = useState(false);
+  const [loadingItem, setLoadingItem] = useState(true);
 
   // const [day, setDay] = useState('Today')
   // const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 'Saturday'];
@@ -23,14 +23,14 @@ function ImagePage() {
       },
     });
 
-    if (items.status === 504 || items.status === 401) {
+    if (items.status === 504 || items.status === 401 ) {
       alert(`Alert Response Status: `, items.status)
       }
 else{
     const itemsJSON = await items.json();
     console.log("itemJson", itemsJSON)
     await setItem(itemsJSON)
-    // setLoadingItem(false)
+    setLoadingItem(false)
     }
 }
 
@@ -49,12 +49,8 @@ else{
         <Typography>ASTRONOMY DAILY PHOTO</Typography>
           {loadingItem && <div>Loading..</div>}  
         
-          <Box justifyContent="space-between">
-          <Button
-            >Prev</Button>
-            <Button
-            >Next</Button>
-            
+          <Box justifyContent="space-between"  m="30px auto">
+                  
           {loadingItem && <CircularProgress />}
           {!loadingItem && <img
             alt={item.title}

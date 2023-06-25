@@ -63,8 +63,22 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - NASA API [info](https://api.nasa.gov/)
     - APOD daily photo [info](https://api.nasa.gov/?ref=its-foss)
     - Mars Rover photos [info](https://api.nasa.gov/?ref=its-foss#authentication)
+- MongoDB [here]()
 
+#### jsonwebtoken 
+- Auth verification (see resources):
+```
+> npm install jwt-decode
+```
 
+- Add Auth functionality:
+> Required for **Auth.js**
+```
+export function getAuthToken(){
+    const token = localStorage.getItem('token');
+    return token;
+};
+```
 
 
 

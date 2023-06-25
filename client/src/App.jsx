@@ -1,6 +1,10 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import jwt_decode from "jwt-decode";
+
+import { Button} from "@mui/material";
+
 
 import NavBar from './components/Navbar';
 import HomePage from './pages/HomePage';
@@ -10,36 +14,52 @@ import NotFoundPage from './pages/NotFoundPage';
 import ImagePage from './pages/ImagePage';
 
 import './App.css';
-
-
+ 
 //
 function App() {
+const [token, setToken] = useState(false);
+const [user, setUser ] = useState({});
 
 function handleCallbackResponse(response){
   console.log("encoded JWT ID token: " + response.credential);
+  const decoded = jwt_decode(response.crediential) 
+  setToken(response.crediential)
+  // if(decoded.message === 'Invalid token specified'){
+  //   alert(decoded.message)
+  // }
+  console.log("decoded: ", decoded)
+  // document.getElementById('signInDiv').hidden = true;
+}
+
+function handleSignOut(event){
+  setUser({})
+  // document.getElementById('signInDiv').hidden = false;
+
 }
 
 useEffect(()=> {
 /* global google */
-google.accounts.id.initialize({
+  google.accounts.id.initialize({
   client_id: '584124977451-144m9uphitn43bjta69rv3pb2o5sbn8u.apps.googleusercontent.com',
   callback: handleCallbackResponse
 });
 
-google.accounts.id.renderButton(
+  google.accounts.id.renderButton(
   document.getElementById('signInDiv'),
   { theme: "outline", size: "large"}
 );
-
 }, [])
 
 
   return (
     <BrowserRouter>
-    <NavBar />
+    <NavBar token={token}/>
       <div className="App">
       <div class="g-signin2" data-onsuccess="onSignIn" id="signInDiv"></div>
-
+      <Button onClick={(event) => handleSignOut(event)}
+              >
+                Sign Out
+              </Button>
         <div id="page-body">
 
           <Routes>

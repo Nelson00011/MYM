@@ -1,8 +1,8 @@
-import { NavLink, Form, useRouteLoaderData } from 'react-router-dom';
+import { NavLink, Form} from 'react-router-dom';
 
 import classes from './NavBar.module.css';
 
-function NavBar() {
+function NavBar({ token }) {
 // const token = useRouteLoaderData('root');
 
   return (
@@ -31,7 +31,7 @@ function NavBar() {
             </NavLink>
           </li>
         
-          {true &&
+          {!token &&
           <li>
             <NavLink
               to={`/auth`}
@@ -42,7 +42,7 @@ function NavBar() {
               Login
             </NavLink>
           </li>}
-         {false && <li>
+         {token && <li>
           <Form action="/logout" method='post'> 
             <button>Logout</button>
             </Form>
