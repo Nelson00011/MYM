@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Button, IconButton, CircularProgress, formGroupClasses} from "@mui/material";
+import { Box, Typography, Button, IconButton, CircularProgress, useTheme} from "@mui/material";
+import { shades } from "../theme";
 
 function ImagePage() {
   const [item, setItem] = useState({});
@@ -29,7 +30,7 @@ else{
     const itemsJSON = await items.json();
     console.log("itemJson", itemsJSON)
     await setItem(itemsJSON)
-    setLoadingItem(false)
+    // setLoadingItem(false)
     }
 }
 
@@ -53,15 +54,16 @@ else{
             >Prev</Button>
             <Button
             >Next</Button>
-            </Box>
+            
           {loadingItem && <CircularProgress />}
           {!loadingItem && <img
             alt={item.title}
             width="500px"
             height="300px"
             src={item.url} 
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer",  borderColor: 'black', border: '10px' }}
           />}
+          </Box>
           <Typography>{item.title}</Typography>
           <hr/>
           <Typography sx={{ mt: "20px" }}>
@@ -72,11 +74,15 @@ else{
                 onClick={() => {
                   window.open(`https://apod.nasa.gov/apod/astropix.html`)
                 }}
-                sx={{ backgroundColor: 'black', color: "white", borderRadius:0, minWidth: "125px", padding:"10px 50px" }}
+                sx={{ backgroundColor: 'black', color: "white", borderRadius:0, minWidth: "125px", padding:"10px 50px" , '&:hover': {
+                  color: 'black',
+                  borderColor: 'black',
+                  backgroundColor:  shades.secondary[300]
+                }}}
               >
                 Learn More
               </Button>
-              </Box>
+            </Box>
       </Box>
     );
   }

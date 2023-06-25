@@ -5,7 +5,7 @@ At MYM, we are focused on using artificial intelligence &amp; software to elevat
 ## Description
 **ShootingStars** is a ***REACT.js*** app meant to allow the user to explore the Galaxy. The website is designed to allow active users to learn more about the spaces around them, understanding that galaxies are just as distant as the relational space between atoms. It all comes down to empty spaces. 
 
--  Create a [SPA](https://geekflare.com/single-page-applications/) that makes a fetch request data to [NASA](https://www.nasa.gov/multimedia/imagegallery/index.html) and displays a new image every day.
+-  Create a [SPA](https://geekflare.com/single-page-applications/) that makes a fetch request data to [NASA](https://www.nasa.gov/multimedia/imagegallery/index.html) and displays a new image every day (conditional based on login).
 - Use [MongoDB](https://www.mongodb.com/docs/drivers/node/current/quick-start/) to persist account credentials and allow users to sign up & login to your application to view what today’s image is. Use [ExpressJS](https://expressjs.com/) & [NodeJS](https://nodejs.org/en) to handle routes/Server communication.
 - Deploy the application using [Vercel](https://vercel.com/).
 - Add [Google OAuth](https://developers.google.com/identity/sign-in/web/sign-in) as an option to sign in & sign up. 
@@ -82,7 +82,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
     - MUI Alert [here](https://mui.com/material-ui/react-alert/)
     - MUI with CSS Modules style library [here](https://mui.com/material-ui/guides/interoperability/)
     - Additional fun in grid-template-columns [here](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns)
-    - MUI react-tab [here](https://mui.com/material-ui/react-tabs/) (*avoid scrolling option*)
+
 - [React](https://react.dev/) components
     - React responsive [Carousel](https://www.npmjs.com/package/react-responsive-carousel)
 - Filler Text [typographic](https://generator.lorem-ipsum.info/)
@@ -93,4 +93,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - console log testing with `ctr-alt-l` 
 - when a Promise is returned as 'fufilled' use await to get actual item.
 - CSS styles: clamp [here](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp)
+- Postman API Testing [here](https://www.postman.com/)
 - Always Stay Positive & Triple Check Permissions :)
