@@ -44,6 +44,23 @@ At MYM, we are focused on using artificial intelligence &amp; software to elevat
 > npm run start
 ```
 
+#### jsonwebtoken 
+- Auth verification (see resources):
+```
+> npm install jwt-decode
+> npm install gapi-script
+> npm install react-google-login
+```
+
+- Add Auth functionality:
+> Required for **Auth.js**
+```
+export function getAuthToken(){
+    const token = localStorage.getItem('token');
+    return token;
+};
+```
+
 ### Back-End Helpful Hints (Node.js):
 - Initial package.json & install dependencies:
     - Must be `cd`'d into backend/server for install
@@ -59,26 +76,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Resources & Helpful Hints:
 
 - [bcrypt.js](https://www.npmjs.com/package/bcryptjs) part of password hasing for user Authentification. 
-- Google AuthO[here](https://developers.google.com/identity/sign-in/web/sign-in)
+- Google AuthO [here](https://developers.google.com/identity/sign-in/web/sign-in)
+    - react-google-login [button](https://www.npmjs.com/package/react-google-login)
+    -  JWT DECODER [here](https://www.jstoolset.com/jwt)
 - NASA API [info](https://api.nasa.gov/)
     - APOD daily photo [info](https://api.nasa.gov/?ref=its-foss)
     - Mars Rover photos [info](https://api.nasa.gov/?ref=its-foss#authentication)
 - MongoDB [here]()
 
-#### jsonwebtoken 
-- Auth verification (see resources):
-```
-> npm install jwt-decode
-```
 
-- Add Auth functionality:
-> Required for **Auth.js**
-```
-export function getAuthToken(){
-    const token = localStorage.getItem('token');
-    return token;
-};
-```
 
 
 
