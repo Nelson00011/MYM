@@ -2,7 +2,7 @@
 function HomePage() {
   return (
     <div title="Welcome!">
-      <p>Please see the photo of MARS ROVER</p>
+      <p>Login to See the Stars</p>
     </div>
   );
 }

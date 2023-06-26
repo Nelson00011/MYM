@@ -1,14 +1,18 @@
-import { NavLink, Form} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+import { Button } from "@mui/material";
+
 
 import classes from './NavBar.module.css';
 
-function NavBar({ token }) {
-// const token = useRouteLoaderData('root');
+function NavBar({ handleSignOut, token }) {
+
 
   return (
     <header className={classes.header}>
       <nav>
         <ul className={classes.list}>
+        {!token && 
           <li>
             <NavLink
               to="/home"
@@ -17,10 +21,10 @@ function NavBar({ token }) {
               }
               end
             >
-              Home
+              Welcome Home
             </NavLink>
-          </li>
-          <li>
+          </li>}
+          {token && <li>
           <NavLink
               to="/images"
               className={({ isActive }) =>
@@ -29,23 +33,13 @@ function NavBar({ token }) {
             >
              Daily Image
             </NavLink>
-          </li>
-        
-          {!token &&
-          <li>
-            <NavLink
-              to={`/auth`}
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              Login
-            </NavLink>
           </li>}
          {token && <li>
-          <Form action="/logout" method='post'> 
-            <button>Logout</button>
-            </Form>
+          <NavLink to="/" onClick={(event) => {
+            handleSignOut(event)}}
+              >
+                Sign Out
+              </NavLink>
           </li>}
         </ul>
       </nav>
