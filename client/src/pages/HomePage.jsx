@@ -37,11 +37,21 @@ function HomePage() {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box>
-         Create Account to get Daily Photo
+          <Typography
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+          >
+          Login to Get Daily Astronomy Photo
+          </Typography>
+         
         </Box>
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 2,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
