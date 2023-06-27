@@ -7,6 +7,7 @@ import classes from './NavBar.module.css';
 
 function NavBar({ handleSignOut, token }) {
 
+ 
 
   return (
     <header className={classes.header}>

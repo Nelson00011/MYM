@@ -64,8 +64,38 @@ export function getAuthToken(){
 ### Back-End Helpful Hints (Node.js):
 - Initial package.json & install dependencies:
     - Must be `cd`'d into backend/server for install
-  
-  
+    - confirm that config is appropriate:
+```
+> node -v
+> npm -v
+> git --version
+> npm express -v 
+```
+- Initial package.json & install dependencies (localhost:8080):
+```
+> cd <backend name>
+> npm init -y
+> npm install express 
+> npm install nodemon --save-dev
+> npx nodemon src/server.js 
+or 
+> npx nodemon dev
+```
+- initial
+
+
+#### Install MongoDB packages:
+- Updated mongoDB database, collections
+- A new database will need to be generated (see resources)
+- Install mongoDB into the node backend:
+
+```
+>  npm install mongodb
+```
+- Confirm function with MongoClient from mongodb.
+- This will later be connected to with db.js document.
+
+
 --------------------------
 ## Deploy on Vercel
 
@@ -83,6 +113,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
     - APOD daily photo [info](https://api.nasa.gov/?ref=its-foss)
     - Mars Rover photos [info](https://api.nasa.gov/?ref=its-foss#authentication)
 - MongoDB [here]()
+    - MongoDB Community [here](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/)
 - Express [here](https://expressjs.com/)
 
 

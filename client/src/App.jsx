@@ -8,12 +8,11 @@ import HomePage from './pages/HomePage';
 // import CreateAccountPage from './pages/CreateAccountPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ImagePage from './pages/ImagePage';
-
 import './App.css';
+import { Box } from "@mui/material";
  
-
 function App() {
-const [token, setToken] = useState(false);
+const [token, setToken] = useState('');
 const [user, setUser] = useState({});
 // const navigate = useNavigate();
 
@@ -28,9 +27,9 @@ function handleCallbackResponse(response){
   localStorage.setItem('token', tokens)
   console.log("token: ", tokens)
   console.log("decoded: ", decoded)//store token to local storage:
-  if(token){
-   return redirect("/images")
-  }
+  
+  return redirect("/images")
+  
   
   }
   catch (err) {
@@ -42,8 +41,8 @@ function handleCallbackResponse(response){
 
 function handleSignOut(event){
   setUser({});
-  setToken(false);
-  localStorage.setItem('token', false);
+  setToken('');
+  localStorage.setItem('token', 'false');
 }
 
 useEffect(()=> {
@@ -65,10 +64,8 @@ useEffect(()=> {
     <BrowserRouter>
     <NavBar handleSignOut={handleSignOut} token={token}/>
       <div className="App">
-      <div class="g-signin2" data-onsuccess="onSignIn" id="signInDiv"></div>
       
         <div id="page-body">
-
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
@@ -76,6 +73,16 @@ useEffect(()=> {
             <Route path="*" element={<NotFoundPage/>} />
           </Routes>
         </div>
+        <Box  sx={{
+            marginTop: 2,
+            marginBottom: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}>
+        {!token && <div class="g-signin2" data-onsuccess="onSignIn" id="signInDiv"></div>}
+        </Box>
+ 
       </div>
     </BrowserRouter>
    
