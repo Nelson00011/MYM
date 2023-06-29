@@ -90,7 +90,8 @@ or
 - Install mongoDB into the node backend:
 
 ```
->  npm install mongodb
+> npm install mongodb
+> npm install --save body-parser
 ```
 - Confirm function with MongoClient from mongodb.
 - This will later be connected to with db.js document.
@@ -115,6 +116,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - MongoDB [here]()
     - MongoDB Community [here](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/)
 - Express [here](https://expressjs.com/)
+- body-parser [here](https://www.npmjs.com/package/body-parser)
 
 
 

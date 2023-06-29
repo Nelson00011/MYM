@@ -11,6 +11,8 @@ import ImagePage from './pages/ImagePage';
 import './App.css';
 import { Box } from "@mui/material";
  
+
+
 function App() {
 const [token, setToken] = useState('');
 const [user, setUser] = useState({});
@@ -67,8 +69,8 @@ useEffect(()=> {
       
         <div id="page-body">
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
+            <Route path="/" element={<HomePage token={token} />} />
+            <Route path="/home" element={<HomePage token={token} />} />
             <Route path="/images" element={<ImagePage />} />
             <Route path="*" element={<NotFoundPage/>} />
           </Routes>
@@ -79,13 +81,11 @@ useEffect(()=> {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-          }}>
-        {!token && <div class="g-signin2" data-onsuccess="onSignIn" id="signInDiv"></div>}
+          }}>      
+        {!token && <div class="g-signin2" data-onsuccess="onSignIn" id="signInDiv"></div>} 
         </Box>
- 
       </div>
     </BrowserRouter>
-   
   );
 }
 

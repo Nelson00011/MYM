@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { shades } from "../theme";
+import { useState } from 'react'; 
 
 // import classes from './AuthForm.module.css';
 
@@ -22,7 +23,17 @@ import { shades } from "../theme";
 const defaultTheme = createTheme();
 
 
-function HomePage() {
+function HomePage({ token }) {
+  const [isLogin, setIsLogin] = useState(true);
+
+  
+
+
+  const onClickLogin = (event) => {
+    setIsLogin(!isLogin)
+  }
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -44,10 +55,11 @@ function HomePage() {
             flexDirection: 'column',
             alignItems: 'center',
           }}
+          component="h1"
+          variant="h4"
           >
-          Login to Get Daily Astronomy Photo
+          Login to Get Daily Astronomy Image
           </Typography>
-         
         </Box>
         <Box
           sx={{
@@ -57,16 +69,17 @@ function HomePage() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: shades.secondary[500] }}>
+          <Avatar sx={{ m: 1, bgcolor: shades.secondary[700] }}>
             <AutoAwesomeIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            {isLogin ? 'Log in' : 'Create a New User'}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               fullWidth
               id="email"
               label="Email Address"
@@ -84,7 +97,7 @@ function HomePage() {
               id="password"
               autoComplete="current-password"
             />
-            {<FormControlLabel
+            {false && <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />}
@@ -94,31 +107,21 @@ function HomePage() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
-            </Button>}
-            {false && <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Create Account
+               {isLogin ? 'Sign in' : 'Create Account'}
             </Button>}
             <Grid container>
-              <Grid item xs>
+            <Grid item xs>
                 
               </Grid>
               <Grid item>
-                {<Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>}
-                {false && <Link href="#" variant="body2">
-                  {"Have an account? Sign In"}
-                </Link>}
+               <Link variant="body2" onClick={onClickLogin}>
+                  {isLogin ? "Don't have an account? Sign Up" :  "Have an account? Sign In"}
+                </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
+    
       </Container>
     </ThemeProvider>
   );

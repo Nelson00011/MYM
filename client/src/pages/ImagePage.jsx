@@ -46,7 +46,15 @@ else{
     return (
       <Box width="80%" m="30px auto">
     
-        <Typography>ASTRONOMY DAILY PHOTO</Typography>
+        <Typography
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+        component="h1"
+        variant="h4"
+        >DAILY ASTRONOMY PHOTO</Typography>
           {loadingItem && <div>Loading..</div>}  
         
           <Box justifyContent="space-between"  m="30px auto">
@@ -60,7 +68,10 @@ else{
             style={{ cursor: "pointer",  borderColor: 'black', border: '10px' }}
           />}
           </Box>
-          <Typography>{item.title}</Typography>
+          <Typography
+           component="h4"
+           variant="h5"
+          >{item.title}</Typography>
           <hr/>
           <Typography sx={{ mt: "20px" }}>
               {item.explanation}
@@ -78,7 +89,7 @@ else{
               >
                 Learn More
               </Button>
-            </Box>
+          </Box>
       </Box>
     );
   }

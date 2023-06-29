@@ -1,10 +1,12 @@
 import express from 'express';
-import { db, connectToDb } from './db.js';
+import bodyParser from 'body-parser';
+import mongoPractice from './mongo';
+// import { db, connectToDb } from './db.js';
 
 //COMMENTS app components:
 const port = 8000;
 const app = express();
-app.use(express.json());
+app.use(bodyParser.json());
 
 
 //COMMENTS DATABASE CONNECTION:
@@ -12,9 +14,14 @@ app.use(express.json());
 app.get('/', (req, res)=>{
     res.send(`hello ${req.body.name}`);
 })
+
 app.post('/', (req, res)=>{
+    mongoPractice.createUser();
+
     res.send(`hello ${req.body.name}`);
 })
+
+
 
 
 

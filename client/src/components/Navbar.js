@@ -1,8 +1,5 @@
 import { NavLink } from 'react-router-dom';
 
-import { Button } from "@mui/material";
-
-
 import classes from './NavBar.module.css';
 
 function NavBar({ handleSignOut, token }) {
@@ -16,6 +13,7 @@ function NavBar({ handleSignOut, token }) {
         {!token && 
           <li>
             <NavLink
+            component="h1"
               to="/home"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
@@ -27,7 +25,7 @@ function NavBar({ handleSignOut, token }) {
           </li>}
           {token && <li>
           <NavLink
-              to="/images"
+             to="/images"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
@@ -36,7 +34,9 @@ function NavBar({ handleSignOut, token }) {
             </NavLink>
           </li>}
          {token && <li>
-          <NavLink to="/" onClick={(event) => {
+          
+          <NavLink 
+            to="/" onClick={(event) => {
             handleSignOut(event)}}
               >
                 Sign Out
