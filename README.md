@@ -35,7 +35,7 @@ At MYM, we are focused on using artificial intelligence &amp; software to elevat
 > npx create-react-app <project name>
 > cd <project name>
 > npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
-> npm install --save react-router-dom
+> npm install axios react-router-dom dotenv
 > npm install react-redux @reduxjs/toolkit
 > npm install react-responsive-carousel
 ```
@@ -44,22 +44,9 @@ At MYM, we are focused on using artificial intelligence &amp; software to elevat
 > npm run start
 ```
 
-#### jsonwebtoken 
-- Auth verification (see resources):
-```
-> npm install jwt-decode
-> npm install gapi-script
-> npm install react-google-login
-```
+- Postcard verification (see resources):
 
-- Add Auth functionality:
-> Required for **Auth.js**
-```
-export function getAuthToken(){
-    const token = localStorage.getItem('token');
-    return token;
-};
-```
+
 
 ### Back-End Helpful Hints (Node.js):
 - Initial package.json & install dependencies:
@@ -75,7 +62,8 @@ export function getAuthToken(){
 ```
 > cd <backend name>
 > npm init -y
-> npm install express 
+> npm install express cors dotenv passport cookie-session
+> npm install passport-google-oauth2
 > npm install nodemon --save-dev
 > npx nodemon src/server.js 
 or 
@@ -109,7 +97,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [bcrypt.js](https://www.npmjs.com/package/bcryptjs) part of password hasing for user Authentification. 
 - Google AuthO [here](https://developers.google.com/identity/sign-in/web/sign-in)
     - react-google-login [button](https://www.npmjs.com/package/react-google-login)
-    -  JWT DECODER [here](https://www.jstoolset.com/jwt)
+- Passport packages [here](https://www.passportjs.org/packages/passport-google-oauth2/)
 - NASA API [info](https://api.nasa.gov/)
     - APOD daily photo [info](https://api.nasa.gov/?ref=its-foss)
     - Mars Rover photos [info](https://api.nasa.gov/?ref=its-foss#authentication)
@@ -142,6 +130,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - Filler Text [typographic](https://generator.lorem-ipsum.info/)
     - Lorem Ipsum 
 - Google Fonts [here](https://fonts.google.com/)
+- Npm Randomize ID option [here](https://www.npmjs.com/package/uuid)
 
 #### **helpful hint:** 
 - console log testing with `ctr-alt-l` 
@@ -149,3 +138,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - CSS styles: clamp [here](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp)
 - Postman API Testing [here](https://www.postman.com/)
 - Always Stay Positive & Triple Check Permissions :)
+
+<!-- 
+Calling process.env. VARIABLE NAME 
+
+-->
