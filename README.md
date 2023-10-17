@@ -2,7 +2,8 @@
 
 At MYM, we are focused on using artificial intelligence &amp; software to elevate the experience of marketing and business experiences for our clients. We build software tools to aid in lead-generation, copywriting, and ads.
 
-![image](https://github.com/Nelson00011/MYM/assets/112737682/bdd30245-00ce-4b32-abd3-12a51c415bc8)
+![LoginPage](https://github.com/Nelson00011/MYM/assets/112737682/c2540843-48f0-41ed-970b-dccf0d4c2d1a)
+
 
 ## Description
 **ShootingStars** is a ***REACT.js*** app meant to allow the user to explore the Galaxy. The website is designed to allow active users to learn more about the spaces around them, understanding that galaxies are just as distant as the relational space between atoms. It all comes down to empty spaces. 
