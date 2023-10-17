@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, redirect } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import jwtDecode from "jwt-decode";
+import axios from 'axios';
 
 import NavBar from './components/Navbar';
 import HomePage from './pages/HomePage';
@@ -14,76 +14,81 @@ import { Box } from "@mui/material";
 
 
 function App() {
-const [token, setToken] = useState('');
-const [user, setUser] = useState({});
+const [token, setToken] = useState(false);
+const [isLogin, setIsLogin] = useState(false);
+const [user, setUser] = useState(null);
 // const navigate = useNavigate();
-
-function handleCallbackResponse(response){
+//COMMENT: Get user for New Login
+const getUser = async () =>{
   try{
-  console.log("encoded JWT ID token: " + response.credential);
-  console.log("encoded JWT ID token (typof): " + typeof(response.credential));
-  const tokens = response.credential
-  setToken(tokens)
-  const decoded = jwtDecode(tokens);
-  setUser(decoded)
-  localStorage.setItem('token', tokens)
-  console.log("token: ", tokens)
-  console.log("decoded: ", decoded)//store token to local storage:
-  
-  return redirect("/images")
-  
-  
-  }
-  catch (err) {
-    console.log("ERROR.message: ", err.message)
-    alert(err.message)
+    const url = `${process.env.REACT_URL}/auth/login/sucess`;
+    const { data } = await axios.get(url, { withCredentials: true })
+    setUser(data.user._json);
+  } catch (err){
+
   }
 }
+//COMMENT: Old Login
+// function handleCallbackResponse(response){
+//   try{
+//   console.log("encoded JWT ID token: " + response.credential);
+//   console.log("encoded JWT ID token (typof): " + typeof(response.credential));
+//   const tokens = response.credential
+//   setToken(tokens)
+//   setIsLogin(true)
+//   const decoded = jwtDecode(tokens);
+//   // setUser(decoded)
+//   localStorage.setItem('token', tokens)
+//   console.log("token: ", tokens)
+//   console.log("decoded: ", decoded)//store token to local storage:
+  
+//   return redirect("/images")
+  
+//   }
+//   catch (err) {
+//     console.log("ERROR.message: ", err.message)
+//     alert(err.message)
+//   }
+// }
 
 
 function handleSignOut(event){
-  setUser({});
-  setToken('');
+  // setUser({});
+  
+  //TODO: redesign
   localStorage.setItem('token', 'false');
 }
 
 useEffect(()=> {
 /* global google */
-  google.accounts.id.initialize({
-  client_id: '584124977451-144m9uphitn43bjta69rv3pb2o5sbn8u.apps.googleusercontent.com',
-  callback: handleCallbackResponse,
-});
+getUser()
+}, [])
 
-  google.accounts.id.renderButton(
-  document.getElementById('signInDiv'),
-  { theme: "outline", size: "large"}
-);
-}, [token])
+let routes;
 
+if(isLogin){
+  routes = <Routes>
+  <Route path="/" element={<HomePage token={token} />} />
+  <Route path="/home" element={<HomePage token={token} />} />
+  <Route path="/images" element={<ImagePage />} />
+  <Route path="*" element={<NotFoundPage/>} />
+  </Routes>
+} else {
+  routes = <Routes>
+  <Route path="/" element={<HomePage token={token} />} />
+  <Route path="/home" element={<HomePage token={token} />} />
+  <Route path="*" element={<NotFoundPage/>} />
+  </Routes>
+}
 
 
   return (
     <BrowserRouter>
     <NavBar handleSignOut={handleSignOut} token={token}/>
       <div className="App">
-      
         <div id="page-body">
-          <Routes>
-            <Route path="/" element={<HomePage token={token} />} />
-            <Route path="/home" element={<HomePage token={token} />} />
-            <Route path="/images" element={<ImagePage />} />
-            <Route path="*" element={<NotFoundPage/>} />
-          </Routes>
+          {routes}
         </div>
-        <Box  sx={{
-            marginTop: 2,
-            marginBottom: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>      
-        {!token && <div class="g-signin2" data-onsuccess="onSignIn" id="signInDiv"></div>} 
-        </Box>
       </div>
     </BrowserRouter>
   );

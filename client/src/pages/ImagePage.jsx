@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button, CircularProgress} from "@mui/material";
 import { shades } from "../theme";
 
+
+
 function ImagePage() {
   const [item, setItem] = useState({});
   const [loadingItem, setLoadingItem] = useState(true);
@@ -16,7 +18,7 @@ function ImagePage() {
   async function getItem() {
     setLoadingItem(true)
     const items = await fetch(
-      URL+API_KEY ,
+      URL+ API_KEY,
       { method: "GET" ,
       headers: {
         'Content-Type': 'application/json',
@@ -26,12 +28,12 @@ function ImagePage() {
     if (items.status === 504 || items.status === 401 ) {
       alert(`Alert Response Status: `, items.status)
       }
-else{
+
     const itemsJSON = await items.json();
     console.log("itemJson", itemsJSON)
-    await setItem(itemsJSON)
+    setItem(itemsJSON)
     setLoadingItem(false)
-    }
+    
 }
 
   useEffect(() => {
@@ -73,7 +75,7 @@ else{
            variant="h5"
           >{item.title}</Typography>
           <hr/>
-          <Typography sx={{ mt: "20px" }}>
+          <Typography sx={{ mt: "20px" }} align="justify">
               {item.explanation}
             </Typography>
             <Box width="80%" m="30px auto">
@@ -90,6 +92,7 @@ else{
                 Learn More
               </Button>
           </Box>
+          <hr/>
       </Box>
     );
   }
